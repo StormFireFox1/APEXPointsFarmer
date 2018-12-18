@@ -27,7 +27,7 @@ gui.moveTo(960, 300, duration=0.1)
 gui.click()
 
 # Make sure we add variable for previous index to check code so we do not type same query twice, which won't register with points
-previousIndex = rng.randint(0, len(queries - 1))
+previousIndex = rng.randint(0, len(queries) - 1)
 
 # Now we run a "while loop", and run a random query every time
 while (True):
