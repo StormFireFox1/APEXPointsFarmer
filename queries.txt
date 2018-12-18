@@ -1,3 +1,6 @@
+# APEXPointsFarmer Master Query List
+# This list contains all of the queries in the repo, with no sorting. Do not use this for documentation or education, use this for point farming.
+# Feel free to add more queries, but document them in different text files and add them here afterwards.
 SELECT to_date('7.4.07', 'MM.DD.YY') FROM dual;
 SELECT to_number('-$12,345.67','$99,999.99') FROM dual;
 SELECT coalesce(null, null, '33', 'test') FROM dual;
@@ -21,3 +24,24 @@ SELECT replace('latelatelate', 'la', 'nu') FROM dual;
 SELECT abs(-5.23) FROM dual;
 SELECT abs(5) FROM dual;
 SELECT power(2,5) FROM dual;
+# Here on out are SELECT queries on actual tables in the schema we have in RO_A522_SQL_T01
+# Copied verbatim from queries_employees.txt
+SELECT * FROM employees;
+SELECT DISTINCT first_name FROM employees;
+SELECT employee_id, first_name||' '||last_name AS Name, salary FROM employees WHERE salary < 5000;
+SELECT last_name||', '||first_name AS legal_name FROM employees;
+SELECT first_name||' '||last_name AS Employee, department_id FROM employees WHERE salary > 5000;
+SELECT first_name||' '||last_name AS Employee, salary, salary * 1.25 AS Salary_With_Raise FROM employees WHERE salary < 7000;
+SELECT first_name||' '||last_name AS Employee FROM employees WHERE first_name LIKE 'B%';
+SELECT 'Number: '||phone_number||', E-mail: '||email AS contact_info FROM employees;
+SELECT first_name||' '||last_name AS Employee FROM employees WHERE hire_date > '06.02.1990' AND hire_date < '06.05.1997';
+SELECT country_id FROM countries;
+SELECT country_id AS id, country_name AS name FROM countries WHERE region_id > 1 AND region_id < 4;
+SELECT 'Name: 'country_name||', ID: '||country_id||', Region ID: '||region_id AS Information FROM countries;
+SELECT * FROM departments WHERE manager_id > 100 AND manager_id < 201;
+SELECT department_name, department_id FROM departments WHERE department_name LIKE '_h%';
+SELECT location_id, department_name AS name FROM departments WHERE location_id < 2000;
+SELECT department_name AS name, manager_id FROM departments WHERE department_name = 'Marketing';
+SELECT * FROM departments WHERE location_id = 2500;
+SELECT department_id, department_name FROM departments WHERE department_id > 59;
+SELECT d.department_id, d.department_name, e.employee_id, e.first_name||' '||e.last_name as employee_name, e.salary, e.bonus FROM departments d INNER JOIN employees e ON e.manager_id = d.manager_id;
