@@ -1,0 +1,18 @@
+SELECT * FROM employees;
+SELECT employee_id FROM employees;
+SELECT employee_id, salary FROM employees WHERE salary > 5000;
+SELECT first_name||' '||last_name AS angajat FROM employees;
+SELECT first_name||' '||last_name AS angajat,salary FROM employees WHERE salary > 5000;
+SELECT first_name||' '||last_name AS angajat,salary, salary * 1.25 FROM employees WHERE salary < 7000;
+SELECT first_name||' '||last_name AS angajat FROM employees WHERE first_name LIKE 'E%';
+SELECT email||', '||phone_number AS information FROM employees;
+SELECT first_name||' '||last_name AS angajat FROM employees WHERE hire_date > '06.01.1990' AND hire_date < '06.01.1997';
+SELECT country_id FROM countries;
+SELECT country_id, country_name FROM countries WHERE region_id > 1 AND region_id < 4;
+SELECT country_name||' '||country_id||' '||region_id AS information FROM countries;
+SELECT * FROM departments;
+SELECT department_id FROM departments WHERE department_name LIKE 'A%';
+SELECT location_id FROM departments WHERE location_id < 9;
+SELECT manager_id FROM departments WHERE department_name = "Accounting";
+SELECT * FROM departments WHERE location_id = 1700;
+SELECT department_name FROM departments WHERE department_id < 6;
