@@ -26,6 +26,11 @@ print('Script running! Press Ctrl-C to cancel.')
 gui.moveTo(960, 300, duration=0.1)
 gui.click()
 
+# Clean lines in query list that are actually comments
+for query in queries:
+    if query[1] == "#":
+        del query
+
 # Make sure we add variable for previous index to check code so we do not type same query twice, which won't register with points
 previousIndex = rng.randint(0, len(queries) - 1)
 
